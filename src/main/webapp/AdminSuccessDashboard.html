@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Manager Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(to right, #6dd5ed, #2193b0);
+        }
+        .header {
+            width: 100%;
+            padding: 10px;
+            display: flex;
+            justify-content: flex-end;
+            background-color: #2193b0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .header button {
+            background-color: #f44336;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .header button:hover {
+            background-color: #e53935;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        .container h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .container button {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            font-size: 18px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .container button:hover {
+            background: #0056b3;
+        }
+        .container form {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <form action="LogoutServlet" method="post">
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+    <div class="container">
+        <h1>Bank Manager Dashboard</h1>
+        <form action="DashboardRedirectServlet" method="post">
+            <input type="hidden" name="action" value="CreateAccount">
+            <button type="submit">Create a New Account</button>
+        </form>
+        <form action="DashboardRedirectServlet" method="post">
+            <input type="hidden" name="action" value="ViewAccount">
+            <button type="submit">Account Details</button>
+        </form>
+        <form action="DashboardRedirectServlet" method="post">
+            <input type="hidden" name="action" value="TransactionHistory">
+            <button type="submit">Transaction History</button>
+        </form>
+        <form action="DashboardRedirectServlet" method="post">
+            <input type="hidden" name="action" value="EditAccount">
+            <button type="submit">Edit Account Details</button>
+        </form>
+    </div>
+</body>
+</html>

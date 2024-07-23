@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add User</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 300px;
+            max-width: 80%;
+            text-align: center;
+        }
+        .form-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .form-container input,
+        .form-container select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .form-container button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .form-container button:hover {
+            background-color: #45a049;
+        }
+        .error-message {
+            color: red;
+            font-size: 12px;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            const balanceInput = document.getElementById('balance');
+            const balanceValue = parseFloat(balanceInput.value);
+            const errorMessage = document.getElementById('error-message');
+
+            if (balanceValue < 1000) {
+                errorMessage.textContent = 'Balance must be 1000 or above.';
+                return false;
+            }
+
+            errorMessage.textContent = '';
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Add User</h2>
+        <form action="CreateAccountServlet" method="post" onsubmit="return validateForm()">
+            <input type="text" name="name" placeholder="Name" required><br>
+            <input type="text" name="address" placeholder="Address" required><br>
+            <input type="text" name="mobile" placeholder="Mobile" required><br>
+            <input type="email" name="email" placeholder="Email" required><br>
+            <input type="date" name="dob" placeholder="DOB" required><br>
+            <input type="text" id="balance" name="balance" placeholder="Balance" required><br>
+            <div id="error-message" class="error-message"></div>
+            <input type="password" name="password" placeholder="Password" required><br>
+            <input type="date" name="created_date" placeholder="Created Date"><br> <!-- Optional created_date field -->
+            <select name="account_type" required>
+                <option value="">Select Account Type</option>
+                <option value="current">Current Account</option>
+                <option value="savings">Savings Account</option>
+            </select><br>
+            <button type="submit">Save</button>
+        </form>
+    </div>
+</body>
+</html>
